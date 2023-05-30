@@ -1,8 +1,6 @@
 {
   "name": "mern-boilerplate",
-  "author": {
-    "name": "Zulmy Azhary AS"
-  },
+  "author": "Zulmy Azhary AS",
   "version": "1.0.0",
   "description": "Boilerplate for MERN stack",
   "scripts": {
@@ -12,7 +10,7 @@
     "build-client": "npm run build --prefix client",
     "preview-server": "npm run build-server & npm run start --prefix server",
     "preview-client": "npm run build-client & npm run preview --prefix client",
-    "check-types": "cd server & tsc --pretty --noEmit & cd ../client & tsc --pretty --noEmit",
+    "check-types": "cd server & tsc --noEmit & cd ../client & tsc --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "all": "concurrently \"npm run server\" \"npm run client\"",
