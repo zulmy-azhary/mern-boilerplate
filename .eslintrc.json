@@ -19,7 +19,8 @@
     "**/tsconfig.json",
     "**/*.d.ts",
     "**/*.config.ts",
-    "**/*.config.cjs"
+    "**/*.config.cjs",
+    "**/*.config.js"
   ],
   "rules": {
     "@typescript-eslint/no-confusing-void-expression": "off",
@@ -53,6 +54,7 @@
       }
     ],
     "tailwindcss/no-custom-classname": "off",
-    "no-console": "warn"
+    "no-console": "warn",
+    "import/no-absolute-path": "off"
   }
 }
