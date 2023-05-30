@@ -1,0 +1,48 @@
+{
+  "name": "mern-boilerplate",
+  "author": {
+    "name": "Zulmy Azhary AS"
+  },
+  "version": "1.0.0",
+  "description": "Boilerplate for MERN stack",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build-server": "npm run build --prefix server",
+    "build-client": "npm run build --prefix client",
+    "preview-server": "npm run build-server & npm run start --prefix server",
+    "preview-client": "npm run build-client & npm run preview --prefix client",
+    "check-types": "cd server & tsc --pretty --noEmit & cd ../client & tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "all": "concurrently \"npm run server\" \"npm run client\"",
+    "build-all": "npm run build-server & npm run build-client",
+    "install-all": "npm i && concurrently \"cd ./client & npm i\" \"cd ./server & npm i\"",
+    "preview-all": "concurrently \"npm run preview-server\" \"npm run preview-client\"",
+    "check-all": "npm run check-format & npm run check-lint & npm run check-types",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "pre-commit": "npx pretty-quick --staged ng lint ng test",
+    "pre-push": "ng build --aot true"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "concurrently": "^8.0.1",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-tailwindcss": "^3.12.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "pretty-quick": "^3.1.3",
+    "typescript": "^5.0.4"
+  }
+}
