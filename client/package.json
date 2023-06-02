@@ -1,0 +1,28 @@
+{
+  "name": "mern-boilerplate-client",
+  "author": "Zulmy Azhary AS",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Client directory for MERN boilerplate",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "rm -rf ./dist && tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
+  }
+}
