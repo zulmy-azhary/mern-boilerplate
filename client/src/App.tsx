@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getUser } from "./api";
-import type { TUser } from "./types";
+import { getUser } from "@/api";
+import type { TUser } from "@/types";
 
 const App: React.FC = () => {
   const [count, setCount] = useState(0);

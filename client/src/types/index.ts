@@ -1,2 +1,2 @@
-export type { TResponse } from "./api";
-export type { TUser } from "./auth";
+export type { TResponse } from "@/types/api";
+export type { TUser } from "@/types/auth";
