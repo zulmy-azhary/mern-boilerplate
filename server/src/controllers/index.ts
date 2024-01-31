@@ -1,2 +1,2 @@
-export { getHealth } from "./health.controller";
-export { getUser } from "./user.controller";
+export { login, logout, register } from "./auth.controller";
+export { me } from "./user.controller";

@@ -1,9 +1,9 @@
 import type { Application, Router } from "express";
-import { HealthRouter } from "./health.route";
 import { UserRouter } from "./user.route";
+import { AuthRouter } from "./auth.route";
 
 const _routes: Array<[string, Router]> = [
-  ["/", HealthRouter],
+  ["/auth", AuthRouter],
   ["/user", UserRouter]
 ];
 

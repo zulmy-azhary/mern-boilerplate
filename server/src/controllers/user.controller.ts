@@ -1,14 +1,12 @@
 import type { Request, Response } from "express";
-import { logger } from "../utils/logger";
+import { logger } from "../libs/logger";
 
-export const getUser = async (req: Request, res: Response) => {
+export const me = async (req: Request, res: Response) => {
   try {
-    logger.info("USER -> GET_USER = User fetched successfully!");
-    return res
-      .status(200)
-      .send({ status: true, statusCode: 200, message: "User fetched successfully!", data: { name: "John Doe" } });
+    logger.info("USER -> GET_ME = User is authenticated.");
+    return res.status(200).send({ success: true, code: 200, message: "User is authenticated." });
   } catch (err) {
-    logger.error(`USER -> GET_USER = ${(err as Error).message}`);
-    return res.status(500).send({ status: false, statusCode: 500, message: (err as Error).message });
+    logger.error(`USER -> GET_ME = ${(err as Error).message}`);
+    return res.status(500).send({ success: false, error: { code: 500, message: (err as Error).message } });
   }
 };
