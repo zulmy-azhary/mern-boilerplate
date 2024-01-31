@@ -13,7 +13,7 @@
     "check-types": "cd server & tsc --noEmit & cd ../client & tsc --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
-    "all": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build-all": "npm run build-server & npm run build-client",
     "install-all": "npm i && concurrently \"cd ./client & npm i\" \"cd ./server & npm i\"",
     "preview-all": "concurrently \"npm run preview-server\" \"npm run preview-client\"",

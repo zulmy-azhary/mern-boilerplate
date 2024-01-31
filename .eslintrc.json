@@ -29,6 +29,9 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/promise-function-async": "off",
     "multiline-ternary": "off",
     // Quotes
     "quotes": [2, "double", { "avoidEscape": true }],
