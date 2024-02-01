@@ -20,7 +20,9 @@
     "**/*.d.ts",
     "**/*.config.ts",
     "**/*.config.cjs",
-    "**/*.config.js"
+    "**/*.config.js",
+    "**/*.gen.ts",
+    "**/components/ui/*"
   ],
   "rules": {
     "@typescript-eslint/no-confusing-void-expression": "off",
@@ -32,6 +34,9 @@
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/no-throw-literal": "off",
     "multiline-ternary": "off",
     // Quotes
     "quotes": [2, "double", { "avoidEscape": true }],
