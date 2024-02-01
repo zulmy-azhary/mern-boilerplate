@@ -21,9 +21,9 @@
     /* Linting */
     "strict": true,
 
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],
