@@ -1,18 +1,46 @@
-interface TResponseStatus {
-  status: boolean;
-  statusCode: number;
-}
+const responseStatus = {
+  200: "OK",
+  201: "Created",
+  202: "Accepted",
+  203: "Non-Authoritative Information",
+  204: "No Content",
+  400: "Bad Request",
+  401: "Unauthorized",
+  402: "Payment Required",
+  403: "Forbidden",
+  404: "Not Found",
+  405: "Method Not Allowed",
+  406: "Not Acceptable",
+  408: "Request Timeout",
+  410: "Gone",
+  422: "Unprocessable Entity",
+  429: "Too Many Requests",
+  500: "Internal Server Error",
+  502: "Bad Gateway",
+  503: "Service Unavailable"
+} as const;
 
-interface TResponseWithMsg extends TResponseStatus {
+type ResponseCode = keyof typeof responseStatus;
+
+export type ResponseError = {
+  success: false;
+  error: {
+    code: ResponseCode;
+    message: string;
+  };
+};
+
+export type ResponseSuccess = {
+  success: true;
+  code: ResponseCode;
   message: string;
-}
+};
 
-interface TResponseWithData<TData> extends TResponseStatus {
-  data: TData;
-}
+export type ResponseSuccessWithPayload<T> = {
+  success: true;
+  code: ResponseCode;
+  message?: string;
+  data: T;
+};
 
-export type TResponse<Type = string> = Type extends string
-  ? TResponseWithMsg
-  : Type extends object
-  ? TResponseWithData<Type> & Partial<TResponseWithMsg>
-  : never;
+export type Response<T = boolean> = T extends object ? ResponseSuccessWithPayload<T> : ResponseSuccess;
