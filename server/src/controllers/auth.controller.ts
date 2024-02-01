@@ -78,8 +78,8 @@ export const login = async (req: Request, res: Response) => {
     // Log and return success message while send email & accessToken.
     logger.info("AUTH -> LOGIN = User logged in successfully.");
     return res.status(200).send({
-      status: true,
-      statusCode: 200,
+      success: true,
+      code: 200,
       message: "Login succesfully!",
       data: { email: existingUser.email, accessToken }
     });
