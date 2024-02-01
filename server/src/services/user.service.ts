@@ -10,6 +10,6 @@ export const getUserByEmail = async (email: string) => {
   return await UserModel.findOne({ email });
 };
 
-export const createUser = async (payload: z.infer<typeof registerSchema>) => {
+export const createUser = async (payload: Omit<z.infer<typeof registerSchema>, "confirmPassword">) => {
   return await UserModel.create(payload);
 };
