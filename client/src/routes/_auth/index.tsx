@@ -1,6 +1,6 @@
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { loginSchema } from "@/schemas/auth.schema";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,12 +12,15 @@ import { login } from "@/api/auth";
 import { toast } from "sonner";
 import type { AxiosResponse, AxiosError } from "axios";
 import type { Response, ResponseError } from "@/types/api";
+import { useAuthStore } from "@/store/auth.store";
 
 export const Route = createFileRoute("/_auth/")({
   component: LoginPage
 });
 
 function LoginPage() {
+  const { setIsAuthenticated } = useAuthStore(state => state);
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
@@ -30,6 +33,8 @@ function LoginPage() {
   const { mutate: mutateLogin, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (res: AxiosResponse<Response>) => {
+      setIsAuthenticated(true);
+      navigate({ to: "/app" });
       return toast.success(res.data.message);
     },
     onError: (res: AxiosError<ResponseError>) => {

@@ -1,28 +1,33 @@
-import { auth } from "@/lib/auth";
-import { Link, Outlet, createFileRoute, redirect } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/store/auth.store";
+import { Outlet, createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/app")({
   component: LayoutComponent,
   notFoundComponent: NotFoundComponent,
-  beforeLoad: ({ context, location }) => {
-    if (context.auth.status === "logout") {
+  beforeLoad: ({ context }) => {
+    if (!context.auth.isAuthenticated) {
       throw redirect({
         to: "/"
       });
     }
-
-    return {
-      email: auth.email
-    };
   }
 });
 
 function LayoutComponent() {
+  const { setIsAuthenticated } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    navigate({ to: "/" });
+  };
+
   return (
     <div>
       <h1>App</h1>
       <Outlet />
-      <Link to="/">Logout</Link>
+      <Button onClick={handleLogout}>Logout</Button>
     </div>
   );
 }
