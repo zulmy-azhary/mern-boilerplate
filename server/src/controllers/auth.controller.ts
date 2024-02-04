@@ -75,13 +75,19 @@ export const login = async (req: Request, res: Response) => {
     const { password: _, ...userInfos } = existingUser;
     const accessToken = generateAccessToken(userInfos, { expiresIn: 1000 * 60 * 60 * 24 }); // Expires 1d
 
-    // Log and return success message while send email & accessToken.
+    // Set httpOnly cookie
+    const expires = new Date(new Date().setDate(new Date().getDate() + 1)); // Expires 1d
+    res.cookie("accessToken", accessToken, {
+      expires,
+      httpOnly: true
+    });
+
+    // Log and return success message
     logger.info("AUTH -> LOGIN = User logged in successfully.");
     return res.status(200).send({
       success: true,
       code: 200,
-      message: "Login succesfully!",
-      data: { email: existingUser.email, accessToken }
+      message: "You have been logged in."
     });
   } catch (err) {
     logger.error(`AUTH -> LOGIN = ${(err as Error).message}`);
@@ -89,4 +95,20 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-export const logout = async (req: Request, res: Response) => {};
+export const logout = async (req: Request, res: Response) => {
+  try {
+    // Send response to the client that'll remove accessToken's cookie in the browser
+    res.clearCookie("accessToken", { httpOnly: true });
+
+    // Log and return success message
+    logger.info("AUTH -> LOGOUT = User logged out successfully.");
+    return res.status(200).send({
+      success: true,
+      code: 200,
+      message: "You have been logged out."
+    });
+  } catch (err) {
+    logger.error(`AUTH -> LOGOUT = ${(err as Error).message}`);
+    return res.status(500).send({ success: false, error: { code: 500, message: (err as Error).message } });
+  }
+};
