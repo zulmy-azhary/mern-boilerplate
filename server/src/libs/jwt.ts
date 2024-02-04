@@ -1,4 +1,4 @@
-import jwt, { type Secret, type SignOptions, sign } from "jsonwebtoken";
+import { type Secret, type SignOptions, type JwtPayload, sign, verify } from "jsonwebtoken";
 import { config } from "../config/environtments";
 
 export const generateAccessToken = (payload: Record<string, unknown>, options?: SignOptions) => {
@@ -8,13 +8,13 @@ export const generateAccessToken = (payload: Record<string, unknown>, options?: 
   });
 };
 
-export const verifyToken = (token: string) => {
+export const verifyToken = <T = string | JwtPayload>(token: string) => {
   try {
-    const decoded = jwt.verify(token, config.jwtSecret as Secret);
+    const decoded = verify(token, config.jwtSecret as Secret);
     return {
       valid: true,
       expired: false,
-      decoded
+      decoded: decoded as T
     };
   } catch (err) {
     return {
