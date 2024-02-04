@@ -10,13 +10,13 @@ export const requireUser = async (req: Request, res: Response, next: NextFunctio
     if (!user) {
       res.clearCookie("accessToken", { httpOnly: true });
       logger.error("AUTH -> REQUIRE_USER = Access Denied.");
-      return res.status(403).send({ success: false, code: 403, message: "Access Denied." });
+      return res.status(403).send({ success: false, error: { code: 403, message: "Access Denied." } });
     }
 
     // If token is valid, then handle the next middleware or controller
     next();
   } catch (err) {
-    return res.status(500).send({ success: false, code: 500, message: (err as Error).message });
+    return res.status(500).send({ success: false, error: { code: 500, message: (err as Error).message } });
   }
 };
 
@@ -41,11 +41,4 @@ export const deserializedToken = async (req: Request, res: Response, next: NextF
   }
 
   next();
-};
-
-export const generateNewAccessToken = async (req: Request, res: Response, next: NextFunction) => {
-  const refreshToken: string | undefined = req.cookies.refreshToken;
-  if (!refreshToken) {
-    return next();
-  }
 };
