@@ -79,7 +79,9 @@ export const login = async (req: Request, res: Response) => {
     const expires = new Date(new Date().setDate(new Date().getDate() + 1)); // Expires 1d
     res.cookie("accessToken", accessToken, {
       expires,
-      httpOnly: true
+      httpOnly: true,
+      sameSite: "none",
+      secure: true
     });
 
     // Log and return success message
