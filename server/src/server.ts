@@ -16,7 +16,7 @@ dotenv.config();
 // MongoDB connection
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(config.db as string)
+  .connect(config.db!)
   .then(() => logger.info("Connected to MongoDB"))
   .catch(err => logger.error(err));
 
