@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import dotenv from "dotenv";
 import express, { type NextFunction, type Request, type Response } from "express";
 import mongoose from "mongoose";
