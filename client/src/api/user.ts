@@ -1,6 +1,7 @@
-import axios from "@/api/axios";
+import { axiosWithCredentials } from "@/api/axios";
 import type { Response } from "@/types/api";
+import type { UserInfos } from "@/types/user";
 
 export const me = async () => {
-  return await axios.get<Response>("/me");
+  return await axiosWithCredentials.get<Response<UserInfos>>("/user/me");
 };
