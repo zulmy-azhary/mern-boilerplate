@@ -20,3 +20,4 @@ README.md
 vite.config.ts
 # ignore generated files from tanstack router
 *.gen.ts
+*.html
