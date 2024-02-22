@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { getCurrentUser } from "@/hooks/auth";
+import { getCurrentUser } from "@/services/user";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
