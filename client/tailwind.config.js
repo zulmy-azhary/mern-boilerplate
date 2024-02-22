@@ -65,6 +65,12 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out"
+      },
+      fontSize: {
+        "10xl": ["12rem", { lineHeight: "1" }]
+      },
+      strokeWidth: {
+        6: "6"
       }
     }
   },
