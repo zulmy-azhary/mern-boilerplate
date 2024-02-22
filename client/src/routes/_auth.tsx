@@ -2,7 +2,6 @@ import { Outlet, createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_auth")({
   component: AuthLayout,
-  notFoundComponent: NotFoundComponent,
   beforeLoad: ({ context }) => {
     if (context.auth.isAuthenticated) {
       throw redirect({
@@ -20,8 +19,4 @@ function AuthLayout() {
       </main>
     </div>
   );
-}
-
-function NotFoundComponent() {
-  return <div>Not found on Auth Layout</div>;
 }

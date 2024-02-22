@@ -14,12 +14,12 @@ import type { AxiosResponse, AxiosError } from "axios";
 import type { Response, ResponseError } from "@/types/api";
 import { useAuthStore } from "@/store/auth.store";
 
-export const Route = createFileRoute("/_auth/")({
+export const Route = createFileRoute("/_auth/login")({
   component: LoginPage
 });
 
 function LoginPage() {
-  const { setIsAuthenticated } = useAuthStore(state => state);
+  const { setIsAuthenticated } = useAuthStore();
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -39,7 +39,7 @@ function LoginPage() {
     },
     onError: (res: AxiosError<ResponseError>) => {
       if (res.response) {
-        return toast.error(res.response?.data.error.message);
+        return toast.error(res.response.data.error.message);
       }
       return toast.error(res.message);
     }
