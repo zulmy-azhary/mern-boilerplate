@@ -27,7 +27,7 @@ export const FormInput = <T extends FieldValues>(props: FormInputProps<T>) => {
               disabled={isPending || disabled}
             />
           </FormControl>
-          <FormMessage className="text-xs" />
+          <FormMessage className="!mt-0 text-xs" />
         </FormItem>
       )}
     />
