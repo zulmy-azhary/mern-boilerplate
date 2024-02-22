@@ -73,15 +73,15 @@ export const login = async (req: Request, res: Response) => {
 
     // Generate accessToken based on user infos, except password
     const { password: _, ...userInfos } = existingUser;
-    const accessToken = generateAccessToken(userInfos, { expiresIn: 1000 * 60 * 60 * 24 }); // Expires 1d
+    const accessToken = generateAccessToken(userInfos, { expiresIn: "1d" }); // Expires 1d
 
     // Set httpOnly cookie
     const expires = new Date(new Date().setDate(new Date().getDate() + 1)); // Expires 1d
     res.cookie("accessToken", accessToken, {
       expires,
       httpOnly: true,
-      sameSite: "none",
-      secure: true
+      sameSite: "strict", // To prevent CSRF attacks
+      secure: process.env.NODE_ENV === "production" // Set secure true in production
     });
 
     // Log and return success message
