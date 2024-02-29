@@ -68,18 +68,24 @@ The project follows a structured approach, separating the server and client comp
   * `/server/src/config` : Configuration files
   * `/server/src/routes` : API routes
   * `/server/src/controllers` : Request handlers / controllers
+  * `/server/src/libs` : Libraries and utilities
   * `/server/src/models` : Data models
   * `/server/src/schemas` : Data schemas
   * `/server/src/services` : Data models' services
   * `/server/src/middlewares` : Middleware handlers
+  * `/server/src/types` : Utility types for server environment
 
 * `/client` : Frontend ReactJS application
   * `/client/src/api` : Request handlers for client
   * `/client/src/components` : React components
+  * `/client/src/config` : Configuration files
+  * `/client/src/hooks` : Custom hooks
   * `/client/src/lib` : Libraries and utilities
   * `/client/src/routes` : Route pages
-  * `/server/src/schemas` : Form schemas' validations
-  * `/server/src/type` : Utility types
+  * `/client/src/schemas` : Form schemas' validations
+  * `/client/src/services` : Services for data fetching, mutation and manipulation
+  * `/client/src/store` : Zustand store's state management
+  * `/client/src/types` : Utility types for client environment
 
 You can see for the details of project structure below :
 ```
@@ -115,12 +121,25 @@ mern-boilerplate
 │       └───api
 |       |   └─── ...
 │       └───components
+|       |   └───auth
+|       |   |   └─── ...
+|       |   └───layout
+|       |   |   └─── ...
+|       |   └───ui
+|       |       └─── ...
+│       └───config
+|       |   └─── ...
+│       └───hooks
 |       |   └─── ...
 │       └───lib
 |       |   └─── ...
 │       └───routes
 |       |   └─── ...
 │       └───schemas
+|       |   └─── ...
+│       └───services
+|       |   └─── ...
+│       └───store
 |       |   └─── ...
 │       └───types
 |           └─── ...
@@ -148,15 +167,19 @@ mern-boilerplate
         └───schemas
         |   └─── ...
         └───services
+        |   └─── ...
+        └───types
             └─── ...
 ```
 
 ## Features
 
-* **Authentication**: User authentication using JWT tokens.
+* **Authentication**: User authentication using JWT tokens and HttpOnly Cookie.
+* **Update User Account**: User can update their account information.
 * **MongoDB Integration**: Utilizes MongoDB for data storage.
 * **Development Tools**: Includes `nodemon` for server auto-restart and `concurrently` for running server and client concurrently.
 * **Styling**: Basic styling setup with TailwindCSS and ShadCN UI.
+* **Formatting**: Prettier for code formatter.
 * **Linting**: Integrated ESLint for maintaining code quality.
 
 ## Contributing
