@@ -43,4 +43,4 @@ export type ResponseSuccessWithPayload<T> = {
   data: T;
 };
 
-export type Response<T = boolean> = T extends object ? ResponseSuccessWithPayload<T> : ResponseSuccess;
+export type Response<T = undefined> = T extends object ? ResponseSuccessWithPayload<T> : ResponseSuccess;
