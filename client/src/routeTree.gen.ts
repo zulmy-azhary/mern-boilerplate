@@ -15,7 +15,7 @@ import { Route as AppImport } from './routes/app'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as IndexImport } from './routes/index'
 import { Route as AppIndexImport } from './routes/app.index'
-import { Route as AppProfileImport } from './routes/app.profile'
+import { Route as AppAccountImport } from './routes/app.account'
 import { Route as AuthRegisterImport } from './routes/_auth.register'
 import { Route as AuthLoginImport } from './routes/_auth.login'
 
@@ -41,8 +41,8 @@ const AppIndexRoute = AppIndexImport.update({
   getParentRoute: () => AppRoute,
 } as any)
 
-const AppProfileRoute = AppProfileImport.update({
-  path: '/profile',
+const AppAccountRoute = AppAccountImport.update({
+  path: '/account',
   getParentRoute: () => AppRoute,
 } as any)
 
@@ -80,8 +80,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRegisterImport
       parentRoute: typeof AuthImport
     }
-    '/app/profile': {
-      preLoaderRoute: typeof AppProfileImport
+    '/app/account': {
+      preLoaderRoute: typeof AppAccountImport
       parentRoute: typeof AppImport
     }
     '/app/': {
@@ -96,7 +96,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
   AuthRoute.addChildren([AuthLoginRoute, AuthRegisterRoute]),
-  AppRoute.addChildren([AppProfileRoute, AppIndexRoute]),
+  AppRoute.addChildren([AppAccountRoute, AppIndexRoute]),
 ])
 
 /* prettier-ignore-end */
