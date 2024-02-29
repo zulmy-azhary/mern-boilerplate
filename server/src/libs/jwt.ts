@@ -35,7 +35,7 @@ export const createAccessToken = (res: Response, payload: Record<string, unknown
   return res.cookie("accessToken", accessToken, {
     expires,
     httpOnly: true,
-    sameSite: "strict", // To prevent CSRF attacks
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "strict", // To prevent CSRF attacks
     secure: process.env.NODE_ENV === "production" // Set secure true in production
   });
 };
