@@ -3,7 +3,7 @@ import { loginSchema, registerSchema } from "../schemas/auth.schema";
 import { logger } from "../libs/logger";
 import { createUser, getUserByEmail } from "../services/user.service";
 import { checkPasswordMatch, hashPassword } from "../libs/utils";
-import { generateAccessToken } from "../libs/jwt";
+import { createAccessToken } from "../libs/jwt";
 
 export const register = async (req: Request, res: Response) => {
   const validatedFields = registerSchema.safeParse(req.body);
@@ -73,16 +73,7 @@ export const login = async (req: Request, res: Response) => {
 
     // Generate accessToken based on user infos, except password
     const { password: _, ...userInfos } = existingUser;
-    const accessToken = generateAccessToken(userInfos, { expiresIn: "1d" }); // Expires 1d
-
-    // Set httpOnly cookie
-    const expires = new Date(new Date().setDate(new Date().getDate() + 1)); // Expires 1d
-    res.cookie("accessToken", accessToken, {
-      expires,
-      httpOnly: true,
-      sameSite: "strict", // To prevent CSRF attacks
-      secure: process.env.NODE_ENV === "production" // Set secure true in production
-    });
+    createAccessToken(res, userInfos);
 
     // Log and return success message
     logger.info("AUTH -> LOGIN = User logged in successfully.");
