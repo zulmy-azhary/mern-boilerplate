@@ -6,7 +6,7 @@ import type { Control, FieldValues, Path } from "react-hook-form";
 type FormInputProps<T extends FieldValues> = React.ComponentPropsWithRef<"input"> & {
   control: Control<T>;
   name: Path<T>;
-  label: string;
+  label: React.ReactNode;
   isPending?: boolean;
 };
 
@@ -23,7 +23,7 @@ export const FormInput = <T extends FieldValues>(props: FormInputProps<T>) => {
             <Input
               {...field}
               {...rest}
-              className={cn(fieldState.error && "border-red-500")}
+              className={cn("read-only:bg-muted", fieldState.error && "border-red-500")}
               disabled={isPending || disabled}
             />
           </FormControl>
