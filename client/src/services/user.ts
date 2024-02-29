@@ -3,9 +3,9 @@ import type { UserInfos } from "@/types/user";
 import { useQueryClient } from "@tanstack/react-query";
 import type { AxiosResponse } from "axios";
 
-export const getCurrentUser = () => {
+export const useCurrentUser = () => {
   const queryClient = useQueryClient();
-  const data = queryClient.getQueryData<AxiosResponse<Response<UserInfos>>>(["user", "me"]);
+  const response = queryClient.getQueryData<AxiosResponse<Response<UserInfos>>>(["user", "me"]);
 
-  return data?.data.data;
+  return response?.data.data;
 };
