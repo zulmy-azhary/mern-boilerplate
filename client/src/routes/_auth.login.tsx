@@ -13,12 +13,14 @@ import { toast } from "sonner";
 import type { AxiosResponse, AxiosError } from "axios";
 import type { Response, ResponseError } from "@/types/api";
 import { useAuthStore } from "@/store/auth.store";
+import { useDocumentTitle } from "@/hooks/document-title";
 
 export const Route = createFileRoute("/_auth/login")({
   component: LoginPage
 });
 
 function LoginPage() {
+  useDocumentTitle("Login");
   const { setIsAuthenticated } = useAuthStore();
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof loginSchema>>({

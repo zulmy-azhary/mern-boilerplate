@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import { useDocumentTitle } from "@/hooks/document-title";
 import type { AuthStore } from "@/store/auth.store";
 import { type QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext, Link, Outlet } from "@tanstack/react-router";
@@ -13,6 +14,7 @@ export const Route = createRootRouteWithContext<{
 });
 
 function RootComponent() {
+  useDocumentTitle("Home");
   return (
     <>
       <Outlet />
@@ -23,6 +25,7 @@ function RootComponent() {
 }
 
 function NotFoundComponent() {
+  useDocumentTitle("404 Not Found");
   return (
     <div className="flex min-h-screen w-full justify-center bg-white py-16 md:items-center">
       <div className="mx-auto flex max-w-xl flex-col lg:max-w-4xl lg:flex-row">

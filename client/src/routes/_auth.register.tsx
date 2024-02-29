@@ -3,6 +3,7 @@ import { CardWrapper } from "@/components/auth/card-wrapper";
 import { FormInput } from "@/components/auth/form-input";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { useDocumentTitle } from "@/hooks/document-title";
 import { registerSchema } from "@/schemas/auth.schema";
 import type { Response, ResponseError } from "@/types/api";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/_auth/register")({
 });
 
 function RegisterPage() {
+  useDocumentTitle("Register");
   const navigate = useNavigate();
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -40,7 +42,7 @@ function RegisterPage() {
     },
     onError: (res: AxiosError<ResponseError>) => {
       if (res.response) {
-        return toast.error(res.response?.data.error.message);
+        return toast.error(res.response.data.error.message);
       }
       return toast.error(res.message);
     }
