@@ -99,7 +99,7 @@ mern-boilerplate
 ├───README.md
 ├───.husky
 │   └─── ...
-├──client
+├───client
 │   ├───.env.example
 │   ├───.gitignore
 │   ├───package.json
