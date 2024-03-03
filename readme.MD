@@ -90,84 +90,84 @@ The project follows a structured approach, separating the server and client comp
 You can see for the details of project structure below :
 ```
 mern-boilerplate
-|
-└───.eslintrc.json
-└───.gitignore
-└───.prettierignore
-└───.prettierrc
-└───package.json
-└───README.md
-└───.husky
-|   └─── ...
-└───client
-│   └───.env.example
-│   └───.gitignore
-│   └───package.json
-│   └───components.json
-│   └───index.html
-│   └───tailwind.config.js
-│   └───postcss.config.js
-│   └───tsconfig.json
-│   └───tsconfig.node.json
-│   └───vercel.json
-│   └───vite.config.ts
-│   └───public
-|   |   └─── ...
+│
+├───.eslintrc.json
+├───.gitignore
+├───.prettierignore
+├───.prettierrc
+├───package.json
+├───README.md
+├───.husky
+│   └─── ...
+├──client
+│   ├───.env.example
+│   ├───.gitignore
+│   ├───package.json
+│   ├───components.json
+│   ├───index.html
+│   ├───tailwind.config.js
+│   ├───postcss.config.js
+│   ├───tsconfig.json
+│   ├───tsconfig.node.json
+│   ├───vercel.json
+│   ├───vite.config.ts
+│   ├───public
+│   │   └─── ...
 │   └───src
-│       └───main.tsx
-│       └───index.css
-│       └───routeTree.gen.ts
-│       └───vite-end.d.ts
-│       └───api
-|       |   └─── ...
-│       └───components
-|       |   └───auth
-|       |   |   └─── ...
-|       |   └───layout
-|       |   |   └─── ...
-|       |   └───ui
-|       |       └─── ...
-│       └───config
-|       |   └─── ...
-│       └───hooks
-|       |   └─── ...
-│       └───lib
-|       |   └─── ...
-│       └───routes
-|       |   └─── ...
-│       └───schemas
-|       |   └─── ...
-│       └───services
-|       |   └─── ...
-│       └───store
-|       |   └─── ...
+│       ├───main.tsx
+│       ├───index.css
+│       ├───routeTree.gen.ts
+│       ├───vite-end.d.ts
+│       ├───api
+│       │   └─── ...
+│       ├───components
+│       │   ├───auth
+│       │   │   └─── ...
+│       │   ├───layout
+│       │   │   └─── ...
+│       │   └───ui
+│       │       └─── ...
+│       ├───config
+│       │   └─── ...
+│       ├───hooks
+│       │   └─── ...
+│       ├───lib
+│       │   └─── ...
+│       ├───routes
+│       │   └─── ...
+│       ├───schemas
+│       │   └─── ...
+│       ├───services
+│       │   └─── ...
+│       ├───store
+│       │   └─── ...
 │       └───types
-|           └─── ...
+│           └─── ...
 └───server
-    └───.env.example
-    └───.gitignore
-    └───nodemon.json
-    └───package.json
-    └───tsconfig.json
-    └───vercel.json
+    ├───.env.example
+    ├───.gitignore
+    ├───nodemon.json
+    ├───package.json
+    ├───tsconfig.json
+    ├───vercel.json
     └───src
-        └───server.ts
-        └───config
-        |   └─── ...
-        └───controllers
-        |   └─── ...
-        └───libs
-        |   └─── ...
-        └───middlewares
-        |   └─── ...
-        └───models
-        |   └─── ...
-        └───routes
-        |   └─── ...
-        └───schemas
-        |   └─── ...
-        └───services
-        |   └─── ...
+        ├───server.ts
+        ├───config
+        │   └─── ...
+        ├───controllers
+        │   └─── ...
+        ├───libs
+        │   └─── ...
+        ├───middlewares
+        │   └─── ...
+        ├───models
+        │   └─── ...
+        ├───routes
+        │   └─── ...
+        ├───schemas
+        │   └─── ...
+        ├───services
+        │   └─── ...
         └───types
             └─── ...
 ```
